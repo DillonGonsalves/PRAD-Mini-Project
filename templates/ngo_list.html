@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-7mQhpDl5nRA5nY9lr8F1st2NbIly/8WqhjTp+0oFxEA/QUuvlbF6M1KXezGBh3Nb" crossorigin="anonymous">
+    <!--<title>Responsive Navigation Menu Bar</title>-->
+   <TITLE>NGO</TITLE>
+   <style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: #333;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 50px auto;
+			max-width: 1200px;
+			padding-top:30px
+		}
+
+		.card {
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: 50px;
+			overflow: hidden;
+			position: relative;
+			width: 33%;
+			height: 300px;
+		}
+
+		.card img {
+			width: 100%;
+			height: auto;
+		}
+
+		.card:hover img {
+			transform: scale(1.1);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card:hover .overlay {
+			opacity: 1;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card .overlay {
+			background-color: rgba(0, 0, 0, 0.8);
+			color: #fff;
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			padding: 20px;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.card h2 {
+			margin-top: 0;
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.card p {
+			margin-bottom: 10px;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.card button {
+			background-color: #3944BC;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			padding: 12px 20px;
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+			width: 100%;
+		}
+
+		.card button:hover {
+			background-color: #2832C2;
+		}
+		.card a{
+		text-decoration: none;
+		color: white;
+		}
+
+	</style>
+
+
+</head>
+<body>
+{% include 'navabr.html' %}
+
+<div class="container my-5">
+	{% for row in data %}
+		<div class="card">
+			<img src="https://source.unsplash.com/2000x1500/?{{row[2]}}" alt="Doctor performing checkup">
+			<div class="overlay">
+				<h2>NGO-Name: {{row[0]}}</h2>
+				<p>NGO-Type: {{row[2]}}</p>
+				<p>Contact: {{row[3]}}</p>
+
+
+				<button><a href="tel:{{row[3]}}">Contact</a></button>
+			</div>
+		</div>
+
+	   {% endfor %}
+<!--		<div class="card">-->
+<!--			<img src="https://images.unsplash.com/photo-1615985263164-b3b4d528c8dd" alt="Medical equipment">-->
+<!--			<div class="overlay">-->
+<!--				<h2>Diagnostic Tests</h2>-->
+<!--				<p>Curabitur commodo consequat risus, eget venenatis mauris lobortis</p>-->
+<!--				<button>Schedule Appointment</button>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="card">-->
+<!--			<img src="https://images.unsplash.com/photo-1596499027765-2e41ff02cc2e" alt="Dentist performing checkup">-->
+<!--			<div class="overlay">-->
+<!--				<h2>Dental Checkup</h2>-->
+<!--				<p>Nulla facilisi. Maecenas non ultricies ipsum. Aenean facilisis consequat mauris a aliquam.</p>-->
+<!--				<button>Schedule Appointment</button>-->
+<!--			</div>-->
+<!--		</div>-->
+	</div>
+
+
+{% include 'footer.html' %}
+
+
+</body>
+</html>

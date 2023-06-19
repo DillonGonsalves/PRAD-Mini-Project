@@ -1,0 +1,297 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+
+<!--     <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--    &lt;!&ndash; ===== CSS ===== &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
+
+<!--    &lt;!&ndash; ===== Boxicons CSS ===== &ndash;&gt;-->
+<!--    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-7mQhpDl5nRA5nY9lr8F1st2NbIly/8WqhjTp+0oFxEA/QUuvlbF6M1KXezGBh3Nb" crossorigin="anonymous">-->
+<!--    &lt;!&ndash;<title>Responsive Navigation Menu Bar</title>&ndash;&gt;-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--{% include 'navabr.html' %}-->
+<!--<h2 id="cards" class="text-center">Doctors List</h2>-->
+
+<!--<div class="container cards">-->
+<!--<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search specialist.." title="Type in a blood group">-->
+
+<!--<table class="table" id="myTable">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">#</th>-->
+<!--      <th scope="col">Name</th>-->
+<!--      <th scope="col">Address</th>-->
+<!--      <th scope="col">Specialist</th>-->
+<!--&lt;!&ndash;          <th scope="col">PAST ILLNESS</th>&ndash;&gt;-->
+<!--          <th scope="col">CONTACT</th>-->
+
+
+
+
+
+
+
+
+
+
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+
+<!--        {% for row in data %}-->
+<!--            <tr>-->
+<!--                <td>{{row[0]}}</td>-->
+<!--                <td>{{row[1]}}</td>-->
+<!--                <td>{{row[5]}}</td>-->
+<!--                <td>{{row[6]}}</td>-->
+<!--&lt;!&ndash;                  <td>{{row[5]}}</td>&ndash;&gt;-->
+<!--                <td> <button class="btn btn-primary "><a class="btn1" href="tel:{{row[4]}}">-->
+<!--       Call-->
+<!--    </a></button></td>-->
+
+
+<!--            </tr>-->
+<!--        {% endfor %}-->
+
+
+
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--</div>-->
+<!--{% include 'footer.html' %}-->
+
+
+<!--<script>-->
+<!--function myFunction() {-->
+<!--  var input, filter, table, tr, td, i, txtValue;-->
+<!--  input = document.getElementById("myInput");-->
+<!--  filter = input.value.toUpperCase();-->
+<!--  table = document.getElementById("myTable");-->
+<!--  tr = table.getElementsByTagName("tr");-->
+<!--  for (i = 0; i < tr.length; i++) {-->
+<!--    td = tr[i].getElementsByTagName("td")[3];-->
+<!--    if (td) {-->
+<!--      txtValue = td.textContent || td.innerText;-->
+<!--      if (txtValue.toUpperCase().indexOf(filter) > -1) {-->
+<!--        tr[i].style.display = "";-->
+<!--      } else {-->
+<!--        tr[i].style.display = "none";-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
+<!--}-->
+<!--</script>-->
+
+<!--<script>-->
+
+<!--const body = document.querySelector("body"),-->
+<!--      nav = document.querySelector("nav"),-->
+<!--      modeToggle = document.querySelector(".dark-light"),-->
+<!--      searchToggle = document.querySelector(".searchToggle"),-->
+<!--      sidebarOpen = document.querySelector(".sidebarOpen"),-->
+<!--      siderbarClose = document.querySelector(".siderbarClose");-->
+
+<!--      let getMode = localStorage.getItem("mode");-->
+<!--          if(getMode && getMode === "dark-mode"){-->
+<!--            body.classList.add("dark");-->
+<!--          }-->
+
+<!--// js code to toggle dark and light mode-->
+<!--      modeToggle.addEventListener("click" , () =>{-->
+<!--        modeToggle.classList.toggle("active");-->
+<!--        body.classList.toggle("dark");-->
+
+<!--        // js code to keep user selected mode even page refresh or file reopen-->
+<!--        if(!body.classList.contains("dark")){-->
+<!--            localStorage.setItem("mode" , "light-mode");-->
+<!--        }else{-->
+<!--            localStorage.setItem("mode" , "dark-mode");-->
+<!--        }-->
+<!--      });-->
+
+<!--// js code to toggle search box-->
+<!--        searchToggle.addEventListener("click" , () =>{-->
+<!--        searchToggle.classList.toggle("active");-->
+<!--      });-->
+
+
+<!--//   js code to toggle sidebar-->
+<!--sidebarOpen.addEventListener("click" , () =>{-->
+<!--    nav.classList.add("active");-->
+<!--});-->
+
+<!--body.addEventListener("click" , e =>{-->
+<!--    let clickedElm = e.target;-->
+
+<!--    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){-->
+<!--        nav.classList.remove("active");-->
+<!--    }-->
+<!--});-->
+
+<!--</script>-->
+<!-- &lt;!&ndash; Optional JavaScript; choose one of the two! &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Option 1: Bootstrap Bundle with Popper &ndash;&gt;-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>-->
+
+<!--    &lt;!&ndash; Option 2: Separate Popper and Bootstrap JS &ndash;&gt;-->
+<!--    &lt;!&ndash;-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>-->
+<!--    &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+<!doctype html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-7mQhpDl5nRA5nY9lr8F1st2NbIly/8WqhjTp+0oFxEA/QUuvlbF6M1KXezGBh3Nb" crossorigin="anonymous">
+    <!--<title>Responsive Navigation Menu Bar</title>-->
+   <TITLE>NGO</TITLE>
+   <style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: #333;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 50px auto;
+			max-width: 1200px;
+			padding-top:30px
+		}
+
+		.card {
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: 50px;
+			overflow: hidden;
+			position: relative;
+			width: 33%;
+			height: 300px;
+		}
+
+		.card img {
+			width: 100%;
+			height: auto;
+		}
+
+		.card:hover img {
+			transform: scale(1.1);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card:hover .overlay {
+			opacity: 1;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card .overlay {
+			background-color: rgba(0, 0, 0, 0.8);
+			color: #fff;
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			padding: 20px;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.card h2 {
+			margin-top: 0;
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.card p {
+			margin-bottom: 10px;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+			.card button {
+			background-color: #3944BC;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			padding: 12px 20px;
+			cursor: pointer;
+			transition: all 0.3s ease-in-out;
+			width: 100%;
+		}
+
+		.card button:hover {
+			background-color: #2832C2;
+		}
+	</style>
+
+
+</head>
+<body>
+{% include 'navabr.html' %}
+
+<div class="container my-5">
+	{% for row in data %}
+		<div class="card">
+			<img src="https://source.unsplash.com/1000x500/?stethoscope" alt="Doctor performing checkup">
+			<div class="overlay">
+				<h2>Name: {{row[1]}}</h2>
+				<p>Email: {{row[2]}}</p>
+				<p>Contact: {{row[4]}}</p>
+				<p>Speciality: {{row[6]}}</p>
+				<p>Clinic Address: {{row[5]}}</p>
+				<button>Schedule Appointment</button>
+			</div>
+		</div>
+
+	   {% endfor %}
+<!--		<div class="card">-->
+<!--			<img src="https://images.unsplash.com/photo-1615985263164-b3b4d528c8dd" alt="Medical equipment">-->
+<!--			<div class="overlay">-->
+<!--				<h2>Diagnostic Tests</h2>-->
+<!--				<p>Curabitur commodo consequat risus, eget venenatis mauris lobortis</p>-->
+<!--				<button>Schedule Appointment</button>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="card">-->
+<!--			<img src="https://images.unsplash.com/photo-1596499027765-2e41ff02cc2e" alt="Dentist performing checkup">-->
+<!--			<div class="overlay">-->
+<!--				<h2>Dental Checkup</h2>-->
+<!--				<p>Nulla facilisi. Maecenas non ultricies ipsum. Aenean facilisis consequat mauris a aliquam.</p>-->
+<!--				<button>Schedule Appointment</button>-->
+<!--			</div>-->
+<!--		</div>-->
+	</div>
+
+
+{% include 'footer.html' %}
+
+
+</body>
+</html>

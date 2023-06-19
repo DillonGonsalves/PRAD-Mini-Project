@@ -1,0 +1,571 @@
+
+<html>
+
+
+  <head>
+    	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	 <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+<!--&lt;!&ndash;	<link rel="stylesheet" type="text/css" href="css/style.css">&ndash;&gt;-->
+<!--	   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-7mQhpDl5nRA5nY9lr8F1st2NbIly/8WqhjTp+0oFxEA/QUuvlbF6M1KXezGBh3Nb" crossorigin="anonymous">
+    <!--<title>Responsive Navigation Menu Bar</title>-->
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+          h1,h2  {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .forms{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+
+        margin:4px 10px;
+      }
+      .forms12{
+<!--      border:3px solid black;-->
+      }
+     .symptoms-container1 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 20px;
+
+        width: 100vw;
+        height: 200px;
+        overflow-y: scroll;
+      }
+      .symptom-checkbox {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"]{
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid gray;
+      }
+      .button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: ;
+      }
+
+      	.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin: 50px auto;
+			max-width: 1200px;
+			padding-top:30px
+		}
+      .card {
+      display: none;
+  width: 600px;
+
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.card-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.card-body a{
+text-decoration:none;
+color:white;
+}
+.card-body p{
+font-weight: bold;
+color: #ff0000;
+}
+
+    </style>
+    <script>
+      function filterSymptoms() {
+        var input = document.getElementById("symptomSearch");
+        var filter = input.value.toLowerCase();
+        var symptoms = document.getElementsByClassName("symptom-checkbox");
+        for (var i = 0; i < symptoms.length; i++) {
+          var symptom = symptoms[i].textContent.toLowerCase();
+          if (symptom.indexOf(filter) > -1) {
+            symptoms[i].style.display = "";
+          } else {
+            symptoms[i].style.display = "none";
+          }
+        }
+      }
+
+
+
+
+
+     document.addEventListener('DOMContentLoaded', function() {
+            var result = "{{result}}";
+
+            if (result) {
+                var diseaseCard = document.getElementById("diseaseCard");
+                var diseaseName = document.getElementById("diseaseName");
+                diseaseName.textContent = result;
+                diseaseCard.style.display = "block"; // Display the disease card
+            }
+        });
+    </script>
+  </head>
+  <body>
+
+  {% include 'navabr.html' %}
+
+  <div class="container h-100 d-flex justify-content-center align-items-center forms12">
+<!--  <h2 class="forms">Enter Symptoms</h2>-->
+<!--      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi hic quam?</p>-->
+<!--      -->
+    <form  class="forms" action="/predict" method="post">
+      <input type="text" id="symptomSearch" placeholder="Search symptoms" class="search1" onkeyup="filterSymptoms()">
+      <div class="symptoms-container1">
+        <label class="symptom-checkbox">
+          <input type="checkbox" name="symptom" value="Belly_pain">Belly pain
+        </label>
+        <label class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Receiving_Unsterile_Injections">Receiving unsterile injections
+        </label>
+        <label class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="extra_marital_contacts">Extra Marital Contacts
+        </label>
+        <label class="symptom-checkbox">
+        <input type="checkbox" name="symptom" value="sinus_pressure">sinus pressure <br>
+        </label>
+         <label class="symptom-checkbox">
+       <input type="checkbox" name="symptom" value="back_pain">back pain <br>
+        </label>
+        <label  class="symptom-checkbox">
+          <input type="checkbox" name="symptom" value="constipation">constipation<br>
+        </label>
+           <label  class="symptom-checkbox">
+          <input type="checkbox" name="symptom" value="abdominal_pain">abdominal pain<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="diarrhoea">diarrhoea<br>
+        </label>
+           <label  class="symptom-checkbox">
+          <input type="checkbox" name="symptom" value="mild_fever">mild fever<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="yellow_urine">yellow urine<br>
+        </label>   <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="yellowing_of_eyes">yellowing of eyes<br>
+        </label>
+           <label  class="symptom-checkbox">
+         <input type="checkbox" name="symptom" value="acute_liver_failure">acute liver failure<br>
+        </label>
+           <label  class="symptom-checkbox">
+         <input type="checkbox" name="symptom" value="fluid_overload">fluid overload<br>
+        </label>
+           <label  class="symptom-checkbox">
+            <input type="checkbox" name="symptom" value="swelling_of_stomach">swelling of stomach<br>
+        </label>
+           <label  class="symptom-checkbox">
+          <input type="checkbox" name="symptom" value="swelled_lymph_nodes">swelled lymph nodes<br>
+        </label>
+           <label  class="symptom-checkbox">
+            <input type="checkbox" name="symptom" value="malaise">malaise<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="blurred_and_distorted_vision">blurred and distorted vision<br>
+        </label>
+           <label  class="symptom-checkbox">
+            <input type="checkbox" name="symptom" value="phlegm">phlegm<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="throat_irritation">throat irritation<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="redness_of_eyes">redness of eyes<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="runny_nose">runny nose<br>
+        </label>
+           <label  class="symptom-checkbox">
+            <input type="checkbox" name="symptom" value="congestion">congestion<br>
+        </label>
+           <label  class="symptom-checkbox">
+         <input type="checkbox" name="symptom" value="chest_pain">chest pain<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="weakness_in_limbs">weakness_in_limbs<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="fast_heart_rate">fast_heart_rate <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="pain_during_bowel_movements">pain_during_bowel_movements<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="pain_in_anal_region">pain_in_anal_region <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Bloody Stool">Bloody Stool<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="irritation in Anus">Irritation in Anus<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="neck_pain">Neck Pain<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="dizziness">Dizziness<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="cramps">Cramps <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="bruising">Bruising <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="obesity">Obesity<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="swollen_legs">Swollen Legs<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="swollen_blood_vessels">Swollen Blood Vessels <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="puffy_face_and_eyes">Puffy Face and Eyes<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="enlarged_thyroid">Enlarged Thyroid<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="brittle_nails">Brittle Nails <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="swollen_extremities">Swollen Extremities<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="excessive_hunger">Excessive Hunger <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="drying_and_tingling_lips">Drying and Tingling Lips<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="slurred_speech">Slurred Speech <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="knee_pain">Knee Pain <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="hip_joint_pain">Hip Joint Pain <br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="movement_stiffness">Movement Stiffness<br>
+        </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="swelling_joints">Swelling Joints <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="muscle_weakness">Muscle Weakness <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="movement_stiffness">Movement Stiffness <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="spinning_movements">Spinning Movements <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="loss_of_balance">Loss of Balance<br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="unsteadiness">Unsteadiness <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="weakness_of_one_body_side">Weakness of one body side <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="loss_of_smell">Loss of smell <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="bladder_discomfort">Bladder discomfort<br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="foul_smell_of_urine">Foul smell of urine <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="swelling_joints">Swelling Joints <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="continuous_feel_of_urine">Continuous feel of urine<br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="passage_of_gases">Passage of gases <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="internal_itching">Internal itching <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="toxic_look_(typhos)">Toxic look (typhos) <br>
+        </label>
+           </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="depression">Depression <br>
+        </label>
+              </label>
+           <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Irritability">Irritability <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Muscle_pain">Muscle_pain<br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Altered_sensorium">Altered sensorium <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Red_spots_over_body">Red_spots_over_body<br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Belly_pain">Belly_pain <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Abnormal_menstruation">Abnormal_menstruation <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Dischromic_patches">Dischromic_patches <br>
+        </label>
+
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Watering_from_eyes">Watering_from_eyes<br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Increased_appetite">Increased appetite <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Polyuria">Polyuria <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Family_history">Family_history<br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Mucoid_sputum">Mucoid_sputum <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Rusty_sputum">Rusty_sputum <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Lack_of_concentration">Lack_of_concentration<br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Visual_Disturbances">Visual_Disturbances <br>
+        </label>
+             <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Receiving_Blood_Transfusion">Receiving_Blood_Transfusion <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Coma">Coma <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Stomach_Bleeding">Stomach_Bleeding <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Distention_of_Abdomen">Distention_of_Abdomen <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="History_of_Alcohol_Consumption">History_of_Alcohol_Consumption <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="foul_smell_of urine">foul_smell_of urine <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Blood_in_Sputum">Blood_in_Sputum <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Prominent_Veins_on_Calf">Prominent_Veins_on_Calf<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Palpitations">Palpitations <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Painful_Walking">Painful_Walking <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Pus_Filled_Pimples">Pus_Filled_Pimples <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Blackheads">Blackheads <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Scurring">Scurring <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Skin_Peeling">Skin_Peeling<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Silver_Like_Dusting">Silver_Like_Dusting <br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Small_Dents_in_Nails">Small_Dents_in_Nails<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Inflammatory_Nails">Inflammatory_Nails<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Blister">Blister<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Red_Sore_Around_Nose">Red_Sore_Around_Nose<br>
+        </label>
+               <label  class="symptom-checkbox">
+           <input type="checkbox" name="symptom" value="Yellow_Crust_Ooze">Yellow_Crust_Ooze<br>
+        </label>
+
+
+
+
+
+      </div>
+
+      <input type="submit" class="btn btn-primary my-5"  value="Submit" style="display: block; margin: 0 auto;">
+<!--        <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>-->
+    </form>
+
+</div>
+<!--<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>-->
+
+<!--<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">-->
+<!--  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">-->
+<!--    <div class="toast-header">-->
+<!--      <img src="..." class="rounded me-2" alt="...">-->
+<!--      <strong class="me-auto">Bootstrap</strong>-->
+<!--      <small>11 mins ago</small>-->
+<!--      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>-->
+<!--    </div>-->
+<!--    <div class="toast-body">-->
+<!--      Hello, world! This is a toast message.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--   <h1 class="text-center"> Predicted Disease : {{result}}</h1>-->
+
+<div class="container">
+  <div id="diseaseCard" class="card">
+  <div class="card-header">
+    <h2>Predicted Disease</h2>
+      <h3 id="diseaseName">{{result}}</h3>
+  </div>
+  <div class="card-body">
+    <img src="https://source.unsplash.com/1000x500/?{{result}}" alt="Disease Image">
+      <p class="text-center">The predicted disease is 95% accurate, please contact specialized doctor for medications</p>
+      <button class="btn btn-primary text-center"><a class="text-center" href="/doc_list">Contact</a></button>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      modeToggle = document.querySelector(".dark-light"),
+      searchToggle = document.querySelector(".searchToggle"),
+      sidebarOpen = document.querySelector(".sidebarOpen"),
+      siderbarClose = document.querySelector(".siderbarClose");
+
+      let getMode = localStorage.getItem("mode");
+          if(getMode && getMode === "dark-mode"){
+            body.classList.add("dark");
+          }
+
+// js code to toggle dark and light mode
+      modeToggle.addEventListener("click" , () =>{
+        modeToggle.classList.toggle("active");
+        body.classList.toggle("dark");
+
+        // js code to keep user selected mode even page refresh or file reopen
+        if(!body.classList.contains("dark")){
+            localStorage.setItem("mode" , "light-mode");
+        }else{
+            localStorage.setItem("mode" , "dark-mode");
+        }
+      });
+
+// js code to toggle search box
+        searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+      });
+
+
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+
+    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+        nav.classList.remove("active");
+    }
+});
+
+</script>
+ <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    -->
+
+  </body>
+</html>
